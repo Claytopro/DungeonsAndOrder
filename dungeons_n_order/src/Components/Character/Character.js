@@ -6,7 +6,7 @@ class Character extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { input: "" };
+    this.state = { input: "", input2: "" };
     
   }
 
@@ -14,11 +14,22 @@ class Character extends Component {
     this.setState({ input });
   };
 
+  updateInput2 = input2 => {
+    this.setState({ input2 });
+  };
+
   handleAddCharacter = () => {
     this.props.addCharacter(this.state.input);
     this.setState({ input: "" });
     console.log(this.props.characters.allCharacters);
   };
+
+  handleRemoveCharacter = () => {
+    this.props.removeCharacter(parseInt(this.state.input2));
+    this.setState({ input2: "" });
+  
+  };
+
 
   render() {
     return (
@@ -28,13 +39,21 @@ class Character extends Component {
           value={this.state.input}
         />
       <button  onClick={this.handleAddCharacter}>
-          Add carac
+          Add charac
+        </button>
+        <input
+          onChange={e => this.updateInput2(e.target.value)}
+          value={this.state.input2}
+        />
+        <button  onClick={this.handleRemoveCharacter}>
+          delete characer
         </button>
 
            Characters
            <br></br>
           {Object.keys(this.props.characters.allCharacters).map(key => <div> {JSON.stringify(this.props.characters.allCharacters[key])}</div>)}
-  
+        
+      
       </div>
     );
   }
