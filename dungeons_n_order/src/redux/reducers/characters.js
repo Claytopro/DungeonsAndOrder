@@ -1,4 +1,5 @@
-import {ADD_CHARACTER , REMOVE_CHARACTER} from '../actionTypes'
+import {ADD_CHARACTER , REMOVE_CHARACTER,EDIT_CHARACTER} from '../actionTypes'
+
 
 const initialState = {
     allCharacters: [],  
@@ -11,14 +12,24 @@ const initialState = {
           return {...state, allCharacters: [...state.allCharacters, {id,content}]}
           }
 
-          case REMOVE_CHARACTER:{
-            const { id } = action.payload;
-            return {...state, allCharacters: state.allCharacters.filter(character => character.id !== id) }
-          } 
+        case REMOVE_CHARACTER:{
+          const { id } = action.payload;
+          return {...state, allCharacters: state.allCharacters.filter(character => character.id !== id) }
+        } 
 
-          default: {
-              return state
+        case EDIT_CHARACTER: {
+          const { id, content } = action.payload;
+          return {...state, allCharacters:  state.allCharacters.map((character) => {
+            if(character.id === id){
+              character.content = content
+            }
+            return character
+          })}
           }
+
+        default: {
+            return state
+        }
         }
             
   };

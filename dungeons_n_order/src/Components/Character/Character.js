@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import  {addCharacter,removeCharacter} from "../../redux/actions";
+import  {addCharacter,removeCharacter,editCharacter} from "../../redux/actions/characterActions";
 import { connect } from "react-redux";
 
 class Character extends Component {
@@ -25,7 +25,8 @@ class Character extends Component {
   };
 
   handleRemoveCharacter = () => {
-    this.props.removeCharacter(parseInt(this.state.input2));
+    //this.props.removeCharacter(parseInt(this.state.input2));
+    this.props.editCharacter(parseInt(this.state.input2),this.state.input);
     this.setState({ input2: "" });
   
   };
@@ -66,7 +67,8 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = {
    addCharacter,
-   removeCharacter
+   removeCharacter,
+   editCharacter
 };
 
 export default connect(
