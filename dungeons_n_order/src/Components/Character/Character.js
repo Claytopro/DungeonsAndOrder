@@ -47,7 +47,7 @@ class Character extends Component {
           value={this.state.input2}
         />
         <button  onClick={this.handleRemoveCharacter}>
-          delete characer
+          edit characer
         </button>
 
            Characters

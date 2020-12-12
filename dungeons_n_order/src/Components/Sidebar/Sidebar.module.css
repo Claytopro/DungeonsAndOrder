@@ -3,7 +3,7 @@
     flex-direction: column;
     height: 100%;
     width: 250px;
-    background-color: rgb(97, 97, 202);
+    background-color: #2a5379;
     transition: 0.5s;
 }
 
@@ -15,7 +15,7 @@
     text-decoration: none;
     font-size: larger;
     font-weight: bolder;
-    color: black;
+    color: white;
     margin-right: 10px;
 }
 
@@ -27,9 +27,11 @@
 }
 
 .logo:hover{
-    background-color:  rgb(167, 167, 221);
+    background-color:  #336390;
 }
-
+/*
+336390
+*/
 .nav{
     text-decoration: none;
     list-style-type: none;
@@ -43,15 +45,14 @@
 }
 
 .navItem:hover{
-    background-color: white;
+    background-color: #336390;
     border-top: black;
     border-bottom:white ;
 }
 
 .navLink{
     text-decoration: none;
-    background-color: rgb(97, 97, 202);
-    
+    background-color: rgb(97, 97, 202);  
 }
 
 .navParag{
@@ -62,14 +63,16 @@
     font-size: 20px;
     font-weight: bold;
     padding: 10px;
+    color: white;
 }
 
 /*menu icon wrapper*/
 .menuWrapper{
     cursor: pointer;
     border-radius: 3px;
+    color: white;
 }
 
 .menuWrapper:hover{
-    background-color:  rgb(227, 227, 243);
+    background-color:  #336390;
 }
