@@ -2,7 +2,24 @@ import React, { Component } from 'react'
 import styles from './CreatePage.module.css'
 import header from './Images/create_header3.png'
 
+import CreateCharacter from './HelperComponents/CreateCharacter/CreateCharacter'
+
 class CreatePage extends Component {
+ 
+  constructor(props){
+      super(props)
+    
+      this.state = {
+          expanded: false,
+      }
+  }
+
+  characterToggle = () =>{
+    this.setState({
+      expanded: !this.state.expanded
+    })
+}
+
   render() {
     return (
       <div className= {styles.content}>
@@ -12,10 +29,22 @@ class CreatePage extends Component {
            </div>
 
            <div className= {styles.main}>
-             Main content
+             <div className = {styles.mainHeader}>
+              <h3> Explore you creativity and create...</h3>
+             </div>
 
              <div className= {styles.select}>
-               Create selector boxes
+
+             <CreateCharacter/>
+
+               <div className= {styles.selectItem}>
+                  <h4 className= {styles.selectItemHeader}>Create Item</h4>
+               </div>
+
+               <div className= {styles.selectItem}>
+                  <h4 className= {styles.selectItemHeader}>Create Monster</h4>
+               </div>
+
              </div>
            </div>
       </div>

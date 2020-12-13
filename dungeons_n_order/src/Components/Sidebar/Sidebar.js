@@ -5,7 +5,7 @@ import styles from './Sidebar.module.css'
 
 //Icons
 import SwordIcon from '../CustomIcons/SwordIcon'
-import MapIcon from '../CustomIcons/MapIcon'
+//import MapIcon from '../CustomIcons/MapIcon'
 import JournalIcon from '../CustomIcons/JournalIcon'
 //Material UI icons
 import MenuIcon from '@material-ui/icons/Menu'
