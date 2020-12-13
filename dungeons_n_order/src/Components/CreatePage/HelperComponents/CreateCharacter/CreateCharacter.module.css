@@ -17,7 +17,7 @@
     margin: 0px;
     margin-top:20px;
     margin-left: 20px;
-    padding-bottom: 5px;
+    padding-bottom: 10px;
     border-bottom: 1px solid black;
     height: wrap;
     width: max-content;
@@ -32,12 +32,17 @@
     font-family: fantasy;
 }
 
+.selectHeaderRow{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
 .selectItemExpand{
     display: flex;
     flex-direction: column;
     justify-content: center;
     width: 100%;
-   
     padding: 10px;
     margin:20px;
     background-color: #DF622C;
@@ -120,6 +125,21 @@
     font-family: fantasy;
 }
 
+.abilityModifier{
+    position: absolute;
+    text-align: center;
+    width: 30px;
+    height: 25px;
+    font-size: 16px;
+    top:50%;
+    left: 50%; /* position the left edge of the element at the middle of the parent */
+    transform: translate(-50%, 100%);
+    background-color: white;
+    margin-top:2px;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
 .skills{
     display: flex;
     flex-direction: column;
@@ -129,14 +149,14 @@
 }
 
 
-.armorclass{
+.attribute{
     position: relative;
-    height:100px;
+    height:110px;
     width: 100px;
-    
+    margin-right: 40px;
 }
 
-.shieldPos{
+.attributeIconPos{
     position: absolute;
     left: 50%; /* position the left edge of the element at the middle of the parent */
     transform: translate(-50%, 0);
@@ -147,20 +167,20 @@
     color: white;
 }
 
-.armorInput{
+.attributeInput{
     text-align: center;
     width: 30px;
     position: absolute;
     top:50%;
     left: 50%; /* position the left edge of the element at the middle of the parent */
-    transform: translate(-50%, -80%);
+    transform: translate(-50%, -90%);
     border: none;
     font-size: 24px;
     border-radius: 2px;
     padding:3px;
 }
 
-.armorHeader{
+.attributeHeader{
     position: absolute;
     margin:0px;
     left: 50%;
@@ -168,4 +188,43 @@
     transform: translate(-50%, 0);
     width: 100%;
     text-align: center;
+}
+
+.rowHeader{
+    margin: 0px;
+    margin-left: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid black;
+    height: wrap;
+    width: max-content;
+
+}
+
+.charCreatCol{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    height: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.equipInput{
+    border: none;
+    margin-top: 20px;
+    padding: 10px;
+    height: 100px;
+    width: 90%;
+    border-radius: 2px;
+    text-align: start;
+    font-size: 16px;
+    font-family: fantasy;
+}
+
+.inputContainer{
+    display: flex;
+    justify-content: center;
+    width: 100%;
 }
