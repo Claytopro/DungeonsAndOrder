@@ -13,10 +13,22 @@
     transition: 0.5s;
 }
 
+.selectItemHeaderGrow{
+    margin: 0px;
+    margin-top:20px;
+    margin-left: 20px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid black;
+    height: wrap;
+    width: max-content;
+    font-family: fantasy;
+    font-size: 24px;
+    transition: 1s;
+}
+
 .selectItemHeader{
     margin: 0px;
     margin-top:20px;
-    height: wrap;
     font-family: fantasy;
 }
 
@@ -24,7 +36,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 90%;
+    width: 100%;
    
     padding: 10px;
     margin:20px;
@@ -39,33 +51,121 @@
     flex-direction: column;
     width: 100%;
     height: 100%;
+    transition: 5s;
 }
 
 .charCreatRow{
     display: flex;
     flex-direction: row;
+    justify-content: center;
     flex-wrap: wrap;
     width: 100%;
     height: auto;
-
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
+.charInputRow{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.charTextIn{
+    color: wheat;   
+  
+}
+
+
 .charAbility{
-    height: 250px;
-    width: 200px;
+    height: min-content;
+    width: 300px;
+    border-top: 1px solid black;
+    padding-top: 20px;
 }
 
 .ability{
     position: relative;
     height:100px;
-    width: 200px;
+    min-width: 200px;
 }
 
 .wreathPos{
-    color: white;
     font-size: 120px;
+    color: white;
     position: absolute;
     left: 50%; /* position the left edge of the element at the middle of the parent */
-
     transform: translate(-50%, 0);
+}
+
+.abilityInput{
+    text-align: center;
+    width: 46px;
+    position: absolute;
+    top:50%;
+    left: 50%; /* position the left edge of the element at the middle of the parent */
+    transform: translate(-50%, -40%);
+    border: none;
+    font-size: 28px;
+    border-radius: 2px;
+    padding:3px;
+}
+
+.abilityHeader{
+    text-align: center;
+    padding-bottom: 10px;
+    font-size: 20px;
+    font-weight: 600;
+    font-family: fantasy;
+}
+
+.skills{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: 20px;
+    padding-left:40px ;
+}
+
+
+.armorclass{
+    position: relative;
+    height:100px;
+    width: 100px;
+    
+}
+
+.shieldPos{
+    position: absolute;
+    left: 50%; /* position the left edge of the element at the middle of the parent */
+    transform: translate(-50%, 0);
+    border: none;
+    font-size: 80px;
+    border-radius: 2px;
+    padding:3px;
+    color: white;
+}
+
+.armorInput{
+    text-align: center;
+    width: 30px;
+    position: absolute;
+    top:50%;
+    left: 50%; /* position the left edge of the element at the middle of the parent */
+    transform: translate(-50%, -80%);
+    border: none;
+    font-size: 24px;
+    border-radius: 2px;
+    padding:3px;
+}
+
+.armorHeader{
+    position: absolute;
+    margin:0px;
+    left: 50%;
+    bottom: 0;
+    transform: translate(-50%, 0);
+    width: 100%;
+    text-align: center;
 }
