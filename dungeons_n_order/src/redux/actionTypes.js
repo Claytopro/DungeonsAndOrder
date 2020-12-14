@@ -6,7 +6,7 @@ export const ADD_ITEM = "ADD_ITEM";
 export const REMOVE_ITEM = "REMOVE_ITEM";
 export const EDIT_ITEM = "EDIT_ITEM";
 
-export const ADD_MOB= "ADD_MOB";
-export const REMOVE_MOB = "REMOVE_MOB";
-export const EDIT_MOB = "EDIT_MOB";
+export const ADD_MONSTER = "ADD_MONSTER";
+export const REMOVE_MONSTER = "REMOVE_MONSTER";
+export const EDIT_MONSTER = "EDIT_MONSTER";
 

@@ -3,7 +3,7 @@ import {ADD_ITEM , REMOVE_ITEM,EDIT_ITEM} from '../actionTypes'
 
 let nextItemId = 0;
 
-export const addCharacter = content => ({
+export const addItem = content => ({
     type: ADD_ITEM,
     payload: {
       id: ++nextItemId,
@@ -11,7 +11,7 @@ export const addCharacter = content => ({
     }
 });
 
-export const editCharacter = (id,content) => ({
+export const editItem = (id,content) => ({
   type: EDIT_ITEM,
   payload: {
     id:id,
@@ -19,7 +19,7 @@ export const editCharacter = (id,content) => ({
   }
 });
   
-export const removeCharacter = id => ({
+export const removeItem = id => ({
   type: REMOVE_ITEM,
   payload: { id }
 });

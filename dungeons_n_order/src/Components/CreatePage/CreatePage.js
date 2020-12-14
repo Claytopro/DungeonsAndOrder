@@ -3,6 +3,8 @@ import styles from './CreatePage.module.css'
 import header from './Images/create_header3.png'
 
 import CreateCharacter from './HelperComponents/CreateCharacter/CreateCharacter'
+import CreateItem from './HelperComponents/CreateItem/CreateItem'
+import CreateMonster from './HelperComponents/CreateMonster/CreateMonster'
 
 class CreatePage extends Component {
  
@@ -33,23 +35,13 @@ class CreatePage extends Component {
              <div className = {styles.mainHeader}>
               <h3> Explore you Creativity and Create...</h3>
              </div>
-
              <div className= {styles.select}>
-
-             <CreateCharacter/>
-
-               <div className= {styles.selectItem}>
-                  <h4 className= {styles.selectItemHeader}>Create Item</h4>
-               </div>
-
-               <div className= {styles.selectItem}>
-                  <h4 className= {styles.selectItemHeader}>Create Monster</h4>
-               </div>
-
+              <CreateCharacter/>
+              <CreateItem/>
+              <CreateMonster/>
              </div>
            </div>
-
-          </div>
+          </div>{/*end main container */}
       </div>
     );
   }
