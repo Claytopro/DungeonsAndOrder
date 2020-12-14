@@ -12,11 +12,9 @@ import WreathIcon from '../../../CustomIcons/WreathIcon'
 import ShieldIcon from '../../../CustomIcons/ShieldIcon'
 import HeartIcon from '../../../CustomIcons/HeartIcon'
 import SemiWreathIcon from '../../../CustomIcons/SemiwreathIcon'
-import PersonIcon from '@material-ui/icons/Person'
 //material ui
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { ThemeProvider, createMuiTheme} from '@material-ui/core/styles';
 
 //helper components
@@ -40,7 +38,8 @@ function CreateMonster(props) {
     const [popUp,togglePop] = useState(false)
     const [abilityScores,setAbilityScore] = useState(abilityList);
     const [attributes, setAttributes] = useState(monsterAttributes)
-
+    const [actions ,setActions] = useState([])
+    const [numActions,setNumberAction] = useState(0)
 
     const saveMonster = () => {
         let monster = {}
@@ -55,6 +54,26 @@ function CreateMonster(props) {
         }else if(flag === 0 ){
             toggleExpand(false)
         }
+    }
+
+    const addAction = () => {
+        let newArr = [...actions]
+        newArr.push(monsterActions)
+        setActions(newArr)
+    }
+
+    const removeAction = (index) => {
+        let newArr = [...actions]
+        newArr.splice(index, 1);
+        setActions(newArr)
+    }
+
+    const updateAction = (index,content) =>{
+        let newArr = [...actions]
+        newArr[index] = content
+        //setActions(newArr)
+        console.log(newArr[0]);
+        console.log(actions);
     }
 
     return (
@@ -163,9 +182,11 @@ function CreateMonster(props) {
                 
                 <div className= {styles.selectHeaderRow}>
                     <h4 className= {styles.selectItemHeaderGrow}>Create Action</h4>
-                    <Button variant = "outlined" size="large" style = {{fontWeight:"bold"}} >Add</Button>
+                    <Button variant = "outlined" size="large" style = {{fontWeight:"bold"}} onClick = {() => addAction()}>Add</Button>
                 </div>
-                <Action/>
+                {actions.map((action,index) => {
+                    return <Action key = {index} removeAction = {() => removeAction(index)} updateAction  = {updateAction} index = {index}/>
+                })}
             </div>
 
              <div className = {styles.buttonContainer}>
