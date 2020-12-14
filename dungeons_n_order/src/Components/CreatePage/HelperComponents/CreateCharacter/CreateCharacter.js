@@ -21,12 +21,12 @@ import WreathIcon from '../../../CustomIcons/WreathIcon'
 import ShieldIcon from '../../../CustomIcons/ShieldIcon'
 import HeartIcon from '../../../CustomIcons/HeartIcon'
 import SemiWreathIcon from '../../../CustomIcons/SemiwreathIcon'
-
+import PersonIcon from '@material-ui/icons/Person'
 
 const theme = createMuiTheme({
     palette: {
         primary: {
-          main: '#03157e',
+          main: '#272726',
         },
         secondary: {
           main: '#f44336',
@@ -93,6 +93,8 @@ function CreateCharacter(props) {
             <h4 className= {isExpand? styles.selectItemHeaderGrow : styles.selectItemHeader}>Create Character</h4>
             {isExpand && <Button onClick={() => togExpand(0)}>Close</Button>}
         </div>
+
+        {!isExpand && <PersonIcon style={{ fontSize: 60}}/> }
         
       {isExpand &&
       <form>

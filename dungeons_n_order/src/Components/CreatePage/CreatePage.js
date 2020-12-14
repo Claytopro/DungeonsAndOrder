@@ -28,9 +28,10 @@ class CreatePage extends Component {
             <h1 className= {styles.headerText}>Create</h1>
            </div>
 
+          <div className= {styles.mainContainer}>
            <div className= {styles.main}>
              <div className = {styles.mainHeader}>
-              <h3> Explore you creativity and create...</h3>
+              <h3> Explore you Creativity and Create...</h3>
              </div>
 
              <div className= {styles.select}>
@@ -47,6 +48,8 @@ class CreatePage extends Component {
 
              </div>
            </div>
+
+          </div>
       </div>
     );
   }

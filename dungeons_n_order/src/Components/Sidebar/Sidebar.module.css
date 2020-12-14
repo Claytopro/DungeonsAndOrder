@@ -4,11 +4,21 @@
     height: 100%;
     width: 250px;
     background-color: #2a5379;
-    transition: 0.5s;
+    transition: 1s;
 }
 
-.smallSidebar{
- 
+.hiddenSidebar{
+    display: none;
+    transition: 1s;
+}
+
+.floatingSidebar{
+    position: absolute;
+    margin-left: 40px;
+    margin-top: 20px;
+    top: 20;
+    left: 20;
+    z-index: 99;
 }
 
 .headertext{
@@ -60,7 +70,7 @@
     color: black;
     margin: 0px;
     margin-left: 25px;
-    font-size: 20px;
+    font-size: 24px;
     font-weight: bold;
     padding: 10px;
     color: white;

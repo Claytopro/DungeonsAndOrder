@@ -1,4 +1,7 @@
 import React, { Component } from 'react'
+import styles from './Character.module.css'
+import header from './Images/create_header6.png'
+
 import  {addCharacter,removeCharacter,editCharacter} from "../../redux/actions/characterActions";
 import { connect } from "react-redux";
 
@@ -34,7 +37,14 @@ class Character extends Component {
 
   render() {
     return (
-      <div className="">
+      <div className= {styles.content}>
+
+        <div className= {styles.header}>
+          <img src = {header} alt ="header" className= {styles.headerImage}></img>
+          <h1 className= {styles.headerText}>Characters</h1>
+        </div>
+
+
           <input
           onChange={e => this.updateInput(e.target.value)}
           value={this.state.input}
