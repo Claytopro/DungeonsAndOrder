@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux'
+import  {addCharacter} from "../../../../redux/actions/characterActions";
+
 import styles from "./CreateCharacter.module.css";
 //material ui elements
 import Checkbox from '@material-ui/core/Checkbox';
@@ -6,6 +9,7 @@ import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { ThemeProvider, createMuiTheme} from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import DialogPop from '../Dialog/DialogPop'
 
 //defined character parameters
 import skillList from './skillList'
@@ -32,12 +36,13 @@ const theme = createMuiTheme({
 
 
 function CreateCharacter(props) {
-
+    //Redux
+    const dispatch = useDispatch();
+    //state
     const [isExpand, toggleExpand] = useState(false);
     const [abilityScores,setAbilityScore] = useState(abilityList);
     const [skills, setSkills] = useState(skillList);
     const [attributes, setAttributes] = useState(attributeList);
-
 
     const updateSkills = (name) => {
         let newArr = [...skills]
@@ -61,19 +66,36 @@ function CreateCharacter(props) {
     }
 
     //need so that button does not also set it to true when clicked on div
-    const togExpand = () => {
-        toggleExpand(!isExpand)
+    const togExpand = (flag) => {
+        if(flag && !isExpand ){
+            toggleExpand(!isExpand)
+        }else if(flag === 0 ){
+            toggleExpand(false)
+        }
     }
 
+    const saveCharacter = () => {
+        let content = {abilityScores: abilityScores, skills: skills,attributes:attributes }
+        dispatch(addCharacter(content))
+        //reset
+        setAbilityScore(abilityList)
+        setSkills(skillList)
+        setAttributes(attributeList)
+        toggleExpand(false)
+        alert("Character Created!")
+    }
+
+   
+
     return (
-        <div className= {isExpand?  styles.selectItemExpand : styles.selectItem }  onClick={() => togExpand()}>
+        <div className= {isExpand?  styles.selectItemExpand : styles.selectItem }  onClick={() => togExpand(1)}>
         <div className= {styles.selectHeaderRow}>
             <h4 className= {isExpand? styles.selectItemHeaderGrow : styles.selectItemHeader}>Create Character</h4>
-            {isExpand && <Button onClick={() => togExpand()}>Close</Button>}
+            {isExpand && <Button onClick={() => togExpand(0)}>Close</Button>}
         </div>
         
-
       {isExpand &&
+      <form>
         <div className = {styles.characterCreate}>
             <div className = {styles.charCreatRow}>
                     
@@ -328,12 +350,14 @@ function CreateCharacter(props) {
             </div>
         </div>{/*end of row5*/}
         <div className = {styles.charCreatRow}>
-            <Button variant="contained" size="large" style = {{width:"300px"}}> Create Character </Button>
+            <Button variant="contained" size="large" style = {{width:"300px"}} onClick = {() => saveCharacter()}> Create Character </Button>
         </div>{/*end of row5*/}
     </div>
+    </form>
         } {/*end of expanded character creater  */}
-</div>
 
+
+</div>
    
     );
 }
