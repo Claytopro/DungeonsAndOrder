@@ -44,25 +44,30 @@ class Character extends Component {
           <h1 className= {styles.headerText}>Characters</h1>
         </div>
 
+        <div className= {styles.mainContainer}>
+            <div className= {styles.main}>
+              Main 
+              <input
+              onChange={e => this.updateInput(e.target.value)}
+              value={this.state.input}
+              />
+              <button  onClick={this.handleAddCharacter}>
+              Add charac
+              </button>
+              <input
+              onChange={e => this.updateInput2(e.target.value)}
+              value={this.state.input2}
+              />
+              <button  onClick={this.handleRemoveCharacter}>
+              edit characer
+              </button>
 
-          <input
-          onChange={e => this.updateInput(e.target.value)}
-          value={this.state.input}
-        />
-      <button  onClick={this.handleAddCharacter}>
-          Add charac
-        </button>
-        <input
-          onChange={e => this.updateInput2(e.target.value)}
-          value={this.state.input2}
-        />
-        <button  onClick={this.handleRemoveCharacter}>
-          edit characer
-        </button>
+              Characters
+              <br></br>
+              {Object.keys(this.props.characters.allCharacters).map(key => <div> {JSON.stringify(this.props.characters.allCharacters[key])}</div>)}
 
-           Characters
-           <br></br>
-          {Object.keys(this.props.characters.allCharacters).map(key => <div> {JSON.stringify(this.props.characters.allCharacters[key])}</div>)}
+            </div>
+        </div>
         
       
       </div>

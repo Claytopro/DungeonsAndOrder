@@ -75,8 +75,8 @@ function CreateCharacter(props) {
     }
 
     const saveCharacter = () => {
-        let content = {abilityScores: abilityScores, skills: skills,attributes:attributes }
-        dispatch(addCharacter(content))
+        let character = {abilityScores: abilityScores, skills: skills,attributes:attributes }
+        dispatch(addCharacter(character))
         //reset
         setAbilityScore(abilityList)
         setSkills(skillList)
