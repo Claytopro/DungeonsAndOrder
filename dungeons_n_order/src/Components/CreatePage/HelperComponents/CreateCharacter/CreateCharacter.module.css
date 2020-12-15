@@ -229,3 +229,28 @@
     justify-content: center;
     width: 100%;
 }
+
+.popup{
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: rgba(148, 147, 147, 0.602);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popupAnnouncement{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    width: 350px;
+    padding: 20px;
+    text-align: center;
+    font-size: 26px;
+    font-weight: 600;
+    border-radius: 2px;
+}

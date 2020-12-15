@@ -5,6 +5,7 @@ const monsterAttributes =
     {attribute:"hit points", value: 0},
     {attribute:"speed", value: 0},
     {attribute:"name", value: ""},
+    {attribute:"alignement", value: ""},
 ]
 
 export default monsterAttributes;

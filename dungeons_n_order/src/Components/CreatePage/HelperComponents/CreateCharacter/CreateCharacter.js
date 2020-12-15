@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux'
 import  {addCharacter} from "../../../../redux/actions/characterActions";
-
+import _ from 'lodash';
 import styles from "./CreateCharacter.module.css";
 //material ui elements
 import Checkbox from '@material-ui/core/Checkbox';
@@ -9,7 +9,6 @@ import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { ThemeProvider, createMuiTheme} from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import DialogPop from '../Dialog/DialogPop'
 
 //defined character parameters
 import skillList from './skillList'
@@ -40,8 +39,9 @@ function CreateCharacter(props) {
     const dispatch = useDispatch();
     //state
     const [isExpand, toggleExpand] = useState(false);
-    const [abilityScores,setAbilityScore] = useState(abilityList);
+    const [abilityScores,setAbilityScore] = useState(_.cloneDeep(abilityList));
     const [skills, setSkills] = useState(skillList);
+    const [popUp,togglePop] = useState(false);
     const [attributes, setAttributes] = useState(attributeList);
 
     const updateSkills = (name) => {
@@ -67,7 +67,7 @@ function CreateCharacter(props) {
 
     //need so that button does not also set it to true when clicked on div
     const togExpand = (flag) => {
-        if(flag && !isExpand ){
+        if(flag && !isExpand && !popUp){
             toggleExpand(!isExpand)
         }else if(flag === 0 ){
             toggleExpand(false)
@@ -82,7 +82,7 @@ function CreateCharacter(props) {
         setSkills(skillList)
         setAttributes(attributeList)
         toggleExpand(false)
-        alert("Character Created!")
+        togglePop(true)
     }
 
    
@@ -96,6 +96,15 @@ function CreateCharacter(props) {
 
         {!isExpand && <PersonIcon style={{ fontSize: 60}}/> }
         
+        {popUp &&   
+            <div className = {styles.popup}>
+                <div className = {styles.popupAnnouncement}>
+                    <h4>Character succesfully Created!</h4>
+                    <Button variant="contained" size="large" style = {{width:"200px", backgroundColor: "#DF622C",fontWeight:"bold"}} onClick = {() => togglePop(false)}> Okay </Button>
+                </div>
+            </div>
+        }
+
       {isExpand &&
       <form>
         <div className = {styles.characterCreate}>
@@ -210,7 +219,7 @@ function CreateCharacter(props) {
                         <div className = {styles.ability}>
                             <WreathIcon style = {{fontSize:"130px"}} className={styles.wreathPos} />
                             <input type = "text" placeholder = "10" className={styles.abilityInput} onChange = {e => updateAbilityScore("intelligence",e.target.value)}/>
-                            <span className={styles.abilityModifier}>{abilityScores[5].value >= 10 ? "+" : " -"} {Math.abs(Math.floor(parseInt(abilityScores[3].value - 10)/2))}</span>
+                            <span className={styles.abilityModifier}>{abilityScores[3].value >= 10 ? "+" : " -"} {Math.abs(Math.floor(parseInt(abilityScores[3].value - 10)/2))}</span>
                         </div>
                         <div className = {styles.skills}>
                             <h4 style = {{margin:"0px"}} >Skills</h4>
