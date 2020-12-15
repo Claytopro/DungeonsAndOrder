@@ -42,7 +42,7 @@ function CreateMonster(props) {
     const [actions ,setActions] = useState([])
 
     const saveMonster = () => {
-        let monster = {attributes: attributes , actions:actions, abilityScores:abilityScores}
+        let monster = _.cloneDeep({attributes: attributes , actions:actions, abilityScores:abilityScores})
         dispatch(addMonster(monster))
         togExpand(0)
         togglePop(true)

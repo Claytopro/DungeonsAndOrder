@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux'
+import _ from 'lodash';
 import  {addItem} from "../../../../redux/actions/itemActions";
 import styles from "./CreateItem.module.css";
 import itemScaffold from './itemScaffold.js'
@@ -24,7 +25,8 @@ function CreateItem(props) {
 
 
     const saveItem = () => {
-        dispatch(addItem(item))
+        const toAdd = _.deepClone(item)
+        dispatch(addItem(toAdd))
         togExpand(0)
         togglePop(true)
     }

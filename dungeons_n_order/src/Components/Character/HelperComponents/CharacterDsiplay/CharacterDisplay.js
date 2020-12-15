@@ -1,26 +1,17 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux'
-import  {addCharacter} from "../../../../redux/actions/characterActions";
-import _ from 'lodash';
-import styles from "./CreateCharacter.module.css";
-//material ui elements
-import Checkbox from '@material-ui/core/Checkbox';
-import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import { ThemeProvider, createMuiTheme} from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
-
-//defined character parameters
-import skillList from './skillList'
-import attributeList from './attributeList'
-import abilityList from './abilityList'
+import React from 'react';
+import styles from "./CharacterDisplay.module.css";
 
 //icons
 import WreathIcon from '../../../CustomIcons/WreathIcon'
 import ShieldIcon from '../../../CustomIcons/ShieldIcon'
 import HeartIcon from '../../../CustomIcons/HeartIcon'
 import SemiWreathIcon from '../../../CustomIcons/SemiwreathIcon'
-import PersonIcon from '@material-ui/icons/Person'
+
+
+import Checkbox from '@material-ui/core/Checkbox';
+import TextField from '@material-ui/core/TextField';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import { ThemeProvider, createMuiTheme} from '@material-ui/core/styles';
 
 const theme = createMuiTheme({
     palette: {
@@ -34,128 +25,72 @@ const theme = createMuiTheme({
   });
 
 
-function CreateCharacter(props) {
-    //Redux
-    const dispatch = useDispatch();
-    //state
-    const [isExpand, toggleExpand] = useState(false);
-    const [abilityScores,setAbilityScore] = useState(_.cloneDeep(abilityList));
-    const [skills, setSkills] = useState(_.cloneDeep(skillList));
-    const [popUp,togglePop] = useState(false);
-    const [attributes, setAttributes] = useState(_.cloneDeep(attributeList));
 
-    const updateSkills = (name) => {
-        let newArr = [...skills]
-        newArr.forEach(index => {if(index.skill === name) index.trained = !index.trained})
-        setSkills(newArr)
-        //console.log(skills);
-    } 
-
-    const updateAtrribute = (name,value) => {
-        let newArr = [...attributes]
-        newArr.forEach(index => {if(index.attribute === name) index.value = value})
-        setAttributes(newArr)
-        //console.log(attributes)
-    }
-
-    const updateAbilityScore = (name,value) => {
-        let newArr = [...abilityScores]
-        newArr.forEach(index => {if(index.attribute === name) index.value = value})
-        setAbilityScore(newArr)
-       // console.log(abilityScores)
-    }
-
-    //need so that button does not also set it to true when clicked on div
-    const togExpand = (flag) => {
-        if(flag && !isExpand && !popUp){
-            toggleExpand(!isExpand)
-        }else if(flag === 0 ){
-            toggleExpand(false)
-        }
-    }
-
-    const saveCharacter = () => {
-        let character = _.cloneDeep({abilityScores: abilityScores, skills: skills,attributes:attributes })
-        dispatch(addCharacter(character))
-        //reset
-        setAbilityScore(abilityList)
-        setSkills(skillList)
-        setAttributes(attributeList)
-        toggleExpand(false)
-        togglePop(true)
-    }
-
-   
+function CharacterDisplay(props) {
+    // const [abilityScores,setAbil] = useState(props.character.content.abilityScores)
+    // const [skills,setSkills] = useState(props.character.content.skills)
+    // const [attributes,setAtrs] = useState(props.character.content.attributes)
+    const abilityScores = props.character.content.abilityScores
+    const skills = props.character.content.skills
+    const attributes = props.character.content.attributes
+    
 
     return (
-        <div className= {isExpand?  styles.selectItemExpand : styles.selectItem }  onClick={() => togExpand(1)}>
-        <div className= {styles.selectHeaderRow}>
-            <h4 className= {isExpand? styles.selectItemHeaderGrow : styles.selectItemHeader}>Create Character</h4>
-            {isExpand && <Button onClick={() => togExpand(0)}>Close</Button>}
-        </div>
-
-        {!isExpand && <PersonIcon style={{ fontSize: 60}}/> }
-        
-        {popUp &&   
-            <div className = {styles.popup}>
-                <div className = {styles.popupAnnouncement}>
-                    <h4>Character succesfully Created!</h4>
-                    <Button variant="contained" size="large" style = {{width:"200px", backgroundColor: "#DF622C",fontWeight:"bold"}} onClick = {() => togglePop(false)}> Okay </Button>
-                </div>
-            </div>
-        }
-
-      {isExpand &&
-      <form>
-        <div className = {styles.characterCreate}>
+        <div className = {styles.characterDisplay}>
             <div className = {styles.charCreatRow}>
-                    
+                <div className = {styles.headerGroup}>
                     <div className = {styles.attribute}> 
                         <SemiWreathIcon className={styles.attributeIconPos} style = {{fontSize:"90px"}}/>
-                        <input type = "text" className={styles.attributeInput}  onChange = {e => updateAtrribute("initiative",e.target.value)}/>
+                        <input type = "text" defaultValue = {attributes[1].value} className={styles.attributeInput} />
                         <h5 className={styles.attributeHeader}>Initiative</h5>
                     </div>
                     
                     <div className = {styles.attribute}> 
                         <ShieldIcon className={styles.attributeIconPos} style = {{fontSize:"80px"}}/>
-                        <input type = "text" className={styles.attributeInput}  onChange = {e => updateAtrribute("armor class",e.target.value)}/>
+                        <input disable type = "text" defaultValue = {attributes[0].value} className={styles.attributeInput} />
                         <h5 className={styles.attributeHeader} >Armor Class</h5>
                     </div>
 
                     <div className = {styles.attribute}> 
                         <HeartIcon className={styles.attributeIconPos} style = {{fontSize:"90px"}}/>
-                        <input type = "text" className={styles.attributeInput}  onChange = {e => updateAtrribute("hit points",e.target.value)}/>
+                        <input type = "text" defaultValue = {attributes[2].value} className={styles.attributeInput} />
                         <h5 className={styles.attributeHeader} >Hit Points</h5>
                     </div>
 
                     <div className = {styles.attribute}> 
                         <SemiWreathIcon className={styles.attributeIconPos} style = {{fontSize:"90px"}}/>
-                        <input type = "text" className={styles.attributeInput}  onChange = {e => updateAtrribute("speed",e.target.value)}/>
+                        <input type = "text" defaultValue = {attributes[3].value} className={styles.attributeInput} />
                         <h5 className={styles.attributeHeader} >Speed</h5>
                     </div>
 
 
             </div>{/*end of row1*/}
-            <div className = {styles.charCreatRow}>
-              <ThemeProvider theme={theme}>
-                  <div className = {styles.charInputRow}>
-                    <TextField id="outlined-basic" label="Player Name"  variant="outlined" className = {styles.charTextIn} style = {{margin: "10px"}} onChange = {e => updateAtrribute("player name",e.target.value)}/>
-                    <TextField id="outlined-basic" label="Class & Level" variant="outlined" className = {styles.charTextIn} style = {{margin: "10px"}} onChange = {e => updateAtrribute("class level",e.target.value)}/>
-                  </div>
-                  <div className = {styles.charInputRow}> 
-                    <TextField id="outlined-basic" label="Race" variant="outlined" className = {styles.charTextIn} style = {{margin: "10px"}} onChange = {e => updateAtrribute("race",e.target.value)}/>
-                    <TextField id="outlined-basic" label="Alignment" variant="outlined" className = {styles.charTextIn} style = {{margin: "10px",color:"black"}} onChange = {e => updateAtrribute("alignment",e.target.value)}/>
-                  </div>
-              </ThemeProvider>
+                <div className = {styles.headerGroup}>
 
-            </div>{/*end of row2*/} 
+                    <ThemeProvider theme={theme}>
+                        <div className = {styles.charInputRow}>
+                            <TextField id="outlined-basic" label="Player Name"  variant="outlined" className = {styles.charTextIn} style = {{margin: "10px"}} defaultValue={attributes[4].value} InputProps={{readOnly: true,}}/>
+                            <TextField id="outlined-basic" label="Class & Level" variant="outlined" className = {styles.charTextIn} style = {{margin: "10px"}} defaultValue={attributes[5].value} InputProps={{readOnly: true,}}/>
+                        </div>
+                        <div className = {styles.charInputRow}> 
+                            <TextField id="outlined-basic" label="Race" variant="outlined" className = {styles.charTextIn} style = {{margin: "10px"}} defaultValue={attributes[6].value} InputProps={{readOnly: true,}}/>
+                            <TextField id="outlined-basic" label="Alignment" variant="outlined" className = {styles.charTextIn} style = {{margin: "10px",color:"black"}} defaultValue={attributes[7].value} InputProps={{readOnly: true,}}/>
+                        </div>
+                    </ThemeProvider>
+                        <div className = {styles.charInputRow}>
+                            <h2 className = {styles.rowHeader}>Equipment</h2>
+                             <textarea disabled type = "text"  className={styles.equipInput} style = {{resize: "none", overflowY:"scroll"}} defaultValue = {attributes[8].value} ></textarea>
+                        </div>
+                </div>{/*end of row2*/} 
+            </div>
+
             <div className = {styles.charCreatRow}>
                 {/*start of Stength*/}
                 <div className = {styles.charAbility}>
                     <div className = {styles.abilityHeader}>Stength</div>
                     <div className = {styles.ability}>
                         <WreathIcon style = {{fontSize:"130px"}} className={styles.wreathPos} />
-                        <input type = "text" placeholder = "10" className={styles.abilityInput} onChange = {e => updateAbilityScore("strength",e.target.value)}/>
+                        <input type = "text" defaultValue= {abilityScores[0].value} className={styles.abilityInput} />
                         <span className={styles.abilityModifier}>{abilityScores[0].value >= 10 ? "+" : " -"} {Math.abs(Math.floor(parseInt(abilityScores[0].value - 10)/2))}</span>
                     </div>
                     <div className = {styles.skills}>
@@ -164,7 +99,8 @@ function CreateCharacter(props) {
                         control={<Checkbox style = {{color:"black"}} />}
                         label="Athletics"
                         labelPlacement="end"
-                        onChange = {() => updateSkills("athletics")}
+                        
+                        checked = {skills[3].trained}
                         />  
                     </div>
                 </div>
@@ -173,7 +109,7 @@ function CreateCharacter(props) {
                     <div className = {styles.abilityHeader}>Dexterity</div>
                     <div className = {styles.ability}>
                         <WreathIcon style = {{fontSize:"130px"}} className={styles.wreathPos} />
-                        <input type = "text" placeholder = "10" className={styles.abilityInput} onChange = {e => updateAbilityScore("dexterity",e.target.value)}/>
+                        <input type = "text" defaultValue = {abilityScores[1].value} className={styles.abilityInput} />
                         <span className={styles.abilityModifier}>{abilityScores[1].value >= 10 ? "+" : " -"} {Math.abs(Math.floor(parseInt(abilityScores[1].value - 10)/2))}</span>
 
                     </div>
@@ -183,21 +119,24 @@ function CreateCharacter(props) {
                         control={<Checkbox style = {{color:"black"}} />}
                         label="Acrobatics"
                         labelPlacement="end"
-                        onChange = {() => updateSkills("acrobatics")}
+                        
+                        checked = {skills[0].trained}
                         />  
 
                         <FormControlLabel
                         control={<Checkbox style = {{color:"black"}} />}
-                        label="Aleight of Hand"
+                        label="Sleight of Hand"
                         labelPlacement="end"
-                        onChange = {() => updateSkills("sleight of hand")}
+                        
+                        checked = {skills[15].trained}
                         /> 
 
                         <FormControlLabel
                         control={<Checkbox style = {{color:"black"}} />}
                         label="Stealth"
                         labelPlacement="end"
-                        onChange = {() => updateSkills("stealth")}
+                        
+                        checked = {skills[16].trained}
                         /> 
                     </div>
                 </div>
@@ -206,7 +145,7 @@ function CreateCharacter(props) {
                         <div className = {styles.abilityHeader}>Constitution</div>
                         <div className = {styles.ability}>
                             <WreathIcon style = {{fontSize:"130px"}} className={styles.wreathPos} />
-                            <input type = "text" placeholder = "10" className={styles.abilityInput} onChange = {e => updateAbilityScore("constitution",e.target.value)}/>
+                            <input type = "text" defaultValue = {abilityScores[2].value}  className={styles.abilityInput} />
                             <span className={styles.abilityModifier}>{abilityScores[2].value >= 10 ? "+" : " -"} {Math.abs(Math.floor(parseInt(abilityScores[2].value - 10)/2))}</span>
 
                         </div>
@@ -218,7 +157,7 @@ function CreateCharacter(props) {
                         <div className = {styles.abilityHeader}>Intelligence</div>
                         <div className = {styles.ability}>
                             <WreathIcon style = {{fontSize:"130px"}} className={styles.wreathPos} />
-                            <input type = "text" placeholder = "10" className={styles.abilityInput} onChange = {e => updateAbilityScore("intelligence",e.target.value)}/>
+                            <input type = "text" defaultValue = {abilityScores[3].value} className={styles.abilityInput} />
                             <span className={styles.abilityModifier}>{abilityScores[3].value >= 10 ? "+" : " -"} {Math.abs(Math.floor(parseInt(abilityScores[3].value - 10)/2))}</span>
                         </div>
                         <div className = {styles.skills}>
@@ -227,35 +166,37 @@ function CreateCharacter(props) {
                             control={<Checkbox style = {{color:"black"}} />}
                             label="Arcana"
                             labelPlacement="end"
-                            onChange = {() => updateSkills("arcana")}
+                            defaultChecked
+                            checked = {skills[2].trained}
                             />  
 
                             <FormControlLabel
                             control={<Checkbox style = {{color:"black"}} />}
                             label="History"
                             labelPlacement="end"
-                            onChange = {() => updateSkills("history")}
+                            defaultChecked
+                            checked = {skills[5].trained}
                             />  
 
                             <FormControlLabel
                             control={<Checkbox style = {{color:"black"}} />}
                             label="Investigation"
                             labelPlacement="end"
-                            onChange = {() => updateSkills("investigation")}
+                            checked = {skills[8].trained}
                             /> 
 
                             <FormControlLabel
                             control={<Checkbox style = {{color:"black"}} />}
                             label="Nature"
                             labelPlacement="end"
-                            onChange = {() => updateSkills("nature")}
+                            checked = {skills[10].trained}
                             /> 
 
                             <FormControlLabel
                             control={<Checkbox style = {{color:"black"}} />}
                             label="Religion"
                             labelPlacement="end"
-                            onChange = {() => updateSkills("religion")}
+                            checked = {skills[14].trained}
                             /> 
                         </div>
                 </div>
@@ -264,7 +205,7 @@ function CreateCharacter(props) {
                         <div className = {styles.abilityHeader}>Wisdom</div>
                         <div className = {styles.ability}>
                             <WreathIcon style = {{fontSize:"130px"}} className={styles.wreathPos} />
-                            <input type = "text" placeholder = "10" className={styles.abilityInput} onChange = {e => updateAbilityScore("wisdom",e.target.value)}/>
+                            <input type = "text" defaultValue = {abilityScores[4].value} className={styles.abilityInput} />
                             <span className={styles.abilityModifier}>{abilityScores[4].value >= 10 ? "+" : " -"} {Math.abs(Math.floor(parseInt(abilityScores[4].value - 10)/2))}</span>
 
                         </div>
@@ -274,35 +215,35 @@ function CreateCharacter(props) {
                             control={<Checkbox style = {{color:"black"}} />}
                             label="Animal Handling"
                             labelPlacement="end"
-                            onChange = {() => updateSkills("animal handling")}
+                            checked = {skills[1].trained}
                             /> 
 
                             <FormControlLabel
                             control={<Checkbox style = {{color:"black"}} />}
                             label="Insight"
                             labelPlacement="end"
-                            onChange = {() => updateSkills("insight")}
+                            checked = {skills[6].trained}
                             /> 
 
                             <FormControlLabel
                             control={<Checkbox style = {{color:"black"}} />}
                             label="Medicine"
                             labelPlacement="end"
-                            onChange = {() => updateSkills("medicine")}
+                            checked = {skills[9].trained}
                             /> 
 
                             <FormControlLabel
                             control={<Checkbox style = {{color:"black"}} />}
                             label="Perception"
                             labelPlacement="end"
-                            onChange = {() => updateSkills("perception")}
+                            checked = {skills[11].trained}
                             /> 
 
                             <FormControlLabel
                             control={<Checkbox style = {{color:"black"}} />}
                             label="Survival"
                             labelPlacement="end"
-                            onChange = {() => updateSkills("survival")}
+                            checked = {skills[17].trained}
                             /> 
                         </div>
                 </div>
@@ -311,7 +252,7 @@ function CreateCharacter(props) {
                         <div className = {styles.abilityHeader}>Charisma</div>
                         <div className = {styles.ability}>
                             <WreathIcon style = {{fontSize:"130px"}} className={styles.wreathPos} />
-                            <input type = "text" placeholder = "10" className={styles.abilityInput} onChange = {e => updateAbilityScore("charisma",e.target.value)}/>
+                            <input type = "text" defaultValue = {abilityScores[5].value} className={styles.abilityInput} />
                             <span className={styles.abilityModifier}>{abilityScores[5].value >= 10 ? "+" : " -"} {Math.abs(Math.floor(parseInt(abilityScores[5].value - 10)/2))}</span>
                         </div>
                         <div className = {styles.skills}>
@@ -320,57 +261,43 @@ function CreateCharacter(props) {
                             control={<Checkbox style = {{color:"black"}} />}
                             label="Deception"
                             labelPlacement="end"
-                            onChange = {() => updateSkills("deception")}
+                            checked = {skills[4].trained}
                             /> 
 
                             <FormControlLabel
                             control={<Checkbox style = {{color:"black"}} />}
                             label="Intimidation"
                             labelPlacement="end"
-                            onChange = {() => updateSkills("intimidation")}
+                            checked = {skills[7].trained}
                             /> 
 
                             <FormControlLabel
                             control={<Checkbox style = {{color:"black"}} />}
                             label="Performance"
                             labelPlacement="end"
-                            onChange = {() => updateSkills("performance")}
+                            checked = {skills[12].trained}
                             />
 
                             <FormControlLabel
                             control={<Checkbox style = {{color:"black"}} />}
                             label="Persuasion"
                             labelPlacement="end"
-                            onChange = {() => updateSkills("persuasion")}
+                            checked = {skills[13].trained}
                             />
                         </div>
                 </div>
         </div> {/*end of row3*/}
         
-        <div className = {styles.charCreatCol}>
-            <h2 className = {styles.rowHeader}>Equipment</h2>
-            <div className = {styles.inputContainer}>
-                <textarea type = "text" placeholder = "Sword Shield and Magic!" className={styles.equipInput} onChange = {e => updateAtrribute("equipement",e.target.value)}></textarea>
-            </div>
-        </div>{/*end of row4*/}
 
         <div className = {styles.charCreatCol}>
             <h2 className = {styles.rowHeader}>Personal Traits</h2>
             <div className = {styles.inputContainer}>
-                <textarea type = "text" placeholder = "Dark Past and Secrative..." className={styles.equipInput} onChange = {e => updateAtrribute("personal traits",e.target.value)}></textarea>
+                <textarea disabled type = "text" className={styles.equipInput} style = {{resize: "none", overflowY:"scroll"}} defaultValue={attributes[9].value} ></textarea>
             </div>
         </div>{/*end of row5*/}
-        <div className = {styles.charCreatRow}>
-            <Button variant="contained" size="large" style = {{width:"300px"}} onClick = {() => saveCharacter()}> Create Character </Button>
-        </div>{/*end of row5*/}
-    </div>
-    </form>
-        } {/*end of expanded character creater  */}
-
-
-</div>
-   
-    );
+        </div>
+    )
 }
 
-export default CreateCharacter;
+export default CharacterDisplay
+

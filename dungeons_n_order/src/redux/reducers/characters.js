@@ -1,6 +1,5 @@
 import {ADD_CHARACTER , REMOVE_CHARACTER,EDIT_CHARACTER} from '../actionTypes'
 
-
 const initialState = {
     allCharacters: [],  
   };
