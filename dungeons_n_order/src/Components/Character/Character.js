@@ -20,9 +20,12 @@ class Character extends Component {
       input2: "",
       selectedChar: 0,
       popUp: false,
+      chars : this.props.characters,
    };
-    
+   
   }
+
+  
 
   handleRemoveCharacter = () => {
     //this.props.removeCharacter(parseInt(this.state.input2));
@@ -49,10 +52,13 @@ class Character extends Component {
   }
 
   deleteSelected = () => {
-    const id = this.props.characters.allCharacters[this.state.selectedChar].id
-    //console.log("delete id :" + id);
-    this.props.removeCharacter(id)
-    this.togglePop(false)
+    console.log(this.state.chars.allCharacters.length);
+    if (this.state.chars.allCharacters.length > 0){
+      const id = this.props.characters.allCharacters[this.state.selectedChar].id
+      //console.log("delete id :" + id);
+      this.props.removeCharacter(id)
+      this.togglePop(false)
+    } 
   }
 
   render() {
@@ -69,10 +75,12 @@ class Character extends Component {
               <div className= {styles.charSelector}>
               <Toolbar characters = {this.props.characters.allCharacters} handleSelect = {this.selectCharacter} handleEdit = {this.handleEdit} handleDelete = {this.handleDelete}/>
  
-              <CharacterDisplay key ={this.props.characters.allCharacters[this.state.selectedChar].id} character = {this.props.characters.allCharacters[this.state.selectedChar]}/>
+              {(this.state.chars.allCharacters.length >0) &&   
+                <CharacterDisplay key ={this.props.characters.allCharacters[this.state.selectedChar].id} character = {this.props.characters.allCharacters[this.state.selectedChar]}/>
+              }
 
 
-              {this.state.popUp &&   
+              {(this.state.popUp && (this.state.chars.allCharacters.length >0)) &&   
                   <div className = {styles.popup}>
                       <div className = {styles.popupAnnouncement}>
                           <h4 style = {{margin: "0px"}}>Are You Sure you want to Delete: </h4>

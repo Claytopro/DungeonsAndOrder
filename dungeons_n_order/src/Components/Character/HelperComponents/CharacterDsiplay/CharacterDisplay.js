@@ -47,19 +47,19 @@ function CharacterDisplay(props) {
                     
                     <div className = {styles.attribute}> 
                         <ShieldIcon className={styles.attributeIconPos} style = {{fontSize:"80px"}}/>
-                        <input disable type = "text" defaultValue = {attributes[0].value} className={styles.attributeInput} />
+                        <input disable="true" type = "text" defaultValue = {attributes[0].value} className={styles.attributeInput} />
                         <h5 className={styles.attributeHeader} >Armor Class</h5>
                     </div>
 
                     <div className = {styles.attribute}> 
                         <HeartIcon className={styles.attributeIconPos} style = {{fontSize:"90px"}}/>
-                        <input type = "text" defaultValue = {attributes[2].value} className={styles.attributeInput} />
+                        <input disable="true"  type = "text" defaultValue = {attributes[2].value} className={styles.attributeInput} />
                         <h5 className={styles.attributeHeader} >Hit Points</h5>
                     </div>
 
                     <div className = {styles.attribute}> 
                         <SemiWreathIcon className={styles.attributeIconPos} style = {{fontSize:"90px"}}/>
-                        <input type = "text" defaultValue = {attributes[3].value} className={styles.attributeInput} />
+                        <input disable="true"  type = "text" defaultValue = {attributes[3].value} className={styles.attributeInput} />
                         <h5 className={styles.attributeHeader} >Speed</h5>
                     </div>
 

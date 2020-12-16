@@ -44,5 +44,128 @@
 }
 
 .main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     margin-top: 60px;
+    padding:20px;
+    width: 80%;
+   
+    background-color: white;
+    border-bottom: 1px solid  rgb(107, 106, 106);
+}
+
+.updateDash{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border: 1px black solid;
+    width: 70%;
+    height: max-content;
+    border-radius: 4px;
+   
+    margin-bottom: 60px;
+    transition: 2s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.updateHeader{
+    width: 80%;
+    display: flex;
+    align-items: flex-start;
+    border-bottom:1px solid black ;
+}
+
+.updateBody{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: 20px;
+}
+
+.updateComments{
+    width: 80%;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.comment{
+    border-bottom: 1px solid gray;
+    width: 100%;
+    padding-left: 20px;
+    margin: 10px;
+}
+
+.updateImage{
+    border: 1px solid black;
+    width: 200px;
+    margin-bottom: 10px;
+}
+
+.imgRow{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width:100%
+}
+
+
+.btnRow{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width:100%;
+    margin-bottom: 10px;
+}
+
+.mainHeader{
+    display: flex;
+    width: 100%;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding-left: 20px;
+    border-bottom: 1px solid black;
+    margin-bottom: 40px;
+}
+
+.buttonHEader{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-right: 40px;
+}
+
+.hidden{
+    display:none;
+    transition: 2s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+}
+
+.equipInput{
+    border: none;
+    margin-top: 20px;
+    padding: 10px;
+    height: 100px;
+    width: 90%;
+    border-radius: 2px;
+    text-align: start;
+    font-size: 16px;
+    font-family: fantasy;
+}
+
+.inputContainer{
+    display: flex;
+    justify-content: center;
+    width: 90%;
+  
+    padding:10px
+}
+
+.postHeader{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
 }
