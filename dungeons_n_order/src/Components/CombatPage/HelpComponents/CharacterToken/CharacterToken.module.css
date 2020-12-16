@@ -1,0 +1,128 @@
+.token{
+    background-color: orange;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 30px;
+    box-shadow:5px 10px 18px #888888;
+    max-width: 400px;
+    height:max-content;
+    transition: order 2s linear ;
+}
+
+.hidden{
+    display: none;
+}
+
+.tokenRow{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.tokenAbilityRow{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+}
+
+.attribute{
+    position: relative;
+    height:110px;
+    width: 100px;
+    margin-right: 0px;
+   
+}
+
+.attributeIconPos{
+    position: absolute;
+    left: 50%; /* position the left edge of the element at the middle of the parent */
+    transform: translate(-50%, 0);
+    border: none;
+    font-size: 80px;
+    border-radius: 2px;
+    padding:3px;
+    color: white;
+}
+
+.attributeInput{
+    text-align: center;
+    width: 30px;
+    position: absolute;
+    top:50%;
+    left: 50%; /* position the left edge of the element at the middle of the parent */
+    transform: translate(-50%, -90%);
+    border: none;
+    font-size: 24px;
+    border-radius: 2px;
+    padding:3px;
+}
+
+.attributeHeader{
+    position: absolute;
+    margin:0px;
+    left: 50%;
+    bottom: 0;
+    transform: translate(-50%, 0);
+    width: 100%;
+    text-align: center;
+}
+
+.wreathPos{
+    font-size: 120px;
+    color: white;
+    position: absolute;
+    left: 50%; /* position the left edge of the element at the middle of the parent */
+    transform: translate(-50%, 0);
+}
+
+.charAbility{
+    height: min-content;
+    width: max-content;
+    padding-top: 10px;
+  
+}
+
+.ability{
+    position: relative;
+    height:100px;
+    min-width: 100px;
+}
+
+.abilityInput{
+    text-align: center;
+    width: 30px;
+    position: absolute;
+    top:50%;
+    left: 50%; /* position the left edge of the element at the middle of the parent */
+    transform: translate(-50%, -90%);
+    border: none;
+    font-size: 22px;
+    border-radius: 2px;
+    padding:3px;
+}
+
+.abilityHeader{
+    text-align: center;
+    padding-bottom: 5px;
+    font-size: 18px;
+    font-weight: 600;
+    font-family: fantasy;
+}
+
+.abilityModifier{
+    position: absolute;
+    text-align: center;
+    width: 30px;
+    height: 25px;
+    font-size: 16px;
+    top:50%;
+    left: 50%; /* position the left edge of the element at the middle of the parent */
+    transform: translate(-50%, 10%);
+    background-color: white;
+    margin-top:2px;
+    border-radius: 2px;
+    overflow: hidden;
+}
