@@ -5,7 +5,7 @@ import styles from './Sidebar.module.css'
 
 //Icons
 import SwordIcon from '../CustomIcons/SwordIcon'
-import MapIcon from '../CustomIcons/MapIcon'
+import GlobeIcon from '../CustomIcons/GlobeIcon'
 import JournalIcon from '../CustomIcons/JournalIcon'
 //Material UI icons
 import MenuIcon from '@material-ui/icons/Menu'
@@ -32,7 +32,7 @@ class Sidebar extends Component {
     render() {
         return (
         <div>
-            <div className = {styles.sidebar} style = {{display:(!this.state.expandedSidebar && 'none' )}}>
+            <div className = {!this.state.expandedSidebar? styles.hiddenSidebar:styles.sidebar} >
                 <div className={styles.logo}>
                     <Link to='/' className={styles.headertext}>
                     Dungeons N Order
@@ -45,20 +45,20 @@ class Sidebar extends Component {
                 <ul className={styles.nav}>
                     <li className={styles.navItem}>
                         <NavLink className={styles.navLink} to='/dashboard'>
-                            <p className={styles.navParag}>Dashboard</p>
+                            <p className={styles.navParag}><GlobeIcon style={{ fontSize: 40,marginBottom: "-5px",marginRight:"5px" }}/>Dashboard</p>
                         </NavLink>
                     </li>
 
                     <li className={styles.navItem}>
                         <NavLink className={styles.navLink} to='/character'>
-                            <p className={styles.navParag}><PersonIcon style={{ fontSize: 30,marginBottom: "-5px",marginRight:"5px" }}/>Characters</p>
+                            <p className={styles.navParag}><PersonIcon style={{ fontSize: 40,marginBottom: "-5px",marginRight:"5px" }}/>Characters</p>
                         </NavLink>
                     </li>
 
                     <li className={styles.navItem}>
                         <NavLink className={styles.navLink} to='/combat'>
                             <p className={styles.navParag}>
-                                <SwordIcon style={{ fontSize: 30,marginBottom: "-5px",marginRight:"5px" }}/>
+                                <SwordIcon style={{ fontSize: 40,marginBottom: "-5px",marginRight:"5px" }}/>
                                 Combat</p>
                         </NavLink>
                     </li>
@@ -66,7 +66,7 @@ class Sidebar extends Component {
                     <li className={styles.navItem}>
                         <NavLink className={styles.navLink} to='/create'>
                             <p className={styles.navParag}>
-                                <AddCircleIcon style={{ fontSize: 30,marginBottom: "-5px",marginRight:"5px" }}/>
+                                <AddCircleIcon style={{ fontSize: 40,marginBottom: "-5px",marginRight:"5px" }}/>
                             Create</p>
                         </NavLink>
                     </li>
@@ -74,7 +74,7 @@ class Sidebar extends Component {
                     <li className={styles.navItem}>
                         <NavLink className={styles.navLink} to='/story'>
                             <p className={styles.navParag}>
-                                <JournalIcon style={{ fontSize: 30,marginBottom: "-5px",marginRight:"5px" ,fontWeight:"bolder"}}/>
+                                <JournalIcon style={{ fontSize: 40,marginBottom: "-5px",marginRight:"5px" ,fontWeight:"bolder"}}/>
                                 Story</p>
                         </NavLink>
                     </li>
@@ -83,7 +83,7 @@ class Sidebar extends Component {
             </div>{/*End of Sidebar */}
 
             <div className = {styles.floatingSidebar} style = {{display:(this.state.expandedSidebar && 'none' )}}>
-                <Fab onClick ={this.MenuClick}>
+                <Fab style = {{backgroundColor:"#2a5379",color:"white"}} onClick ={this.MenuClick}>
                     <MenuIcon style={{ fontSize: 30 }}/>
                 </Fab>
             </div>

@@ -1,0 +1,106 @@
+.selectItem{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 150px;
+    height: 120px;
+    padding: 10px;
+    margin:20px;
+    background-color: #DF622C;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: 1s;
+}
+
+.selectItemHeaderGrow{
+    margin: 0px;
+    margin-top:20px;
+    margin-left: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid black;
+    height: wrap;
+    width: max-content;
+    font-family: fantasy;
+    font-size: 24px;
+    transition: 1s;
+}
+
+.selectItemHeader{
+    margin: 0px;
+    margin-top:20px;
+    font-family: fantasy;
+}
+
+.selectHeaderRow{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.selectItemExpand{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    order: -1;
+    width: 100%;
+    padding: 10px;
+    margin:20px;
+    background-color: #DF622C;
+    border-radius: 3px;
+    transition: 2s;
+}
+
+.createMain{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    transition: 5s;
+}
+
+.itemInput{
+    border: none;
+    padding: 10px;
+    font-size: 18px;
+    font-family: fantasy;
+    width: 80%;
+    margin-left: 10%;
+    border-radius: 2px;
+}
+
+.buttonContainer{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+}
+
+.itemHeader{
+    margin-left: 5%;
+}
+
+.popup{
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: rgba(148, 147, 147, 0.602);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popupAnnouncement{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    width: 350px;
+    padding: 20px;
+    text-align: center;
+    font-size: 26px;
+    font-weight: 600;
+    border-radius: 2px;
+}

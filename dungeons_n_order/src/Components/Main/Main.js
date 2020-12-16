@@ -5,10 +5,13 @@ import Character from '../Character/Character'
 import CombatPage from '../CombatPage/CombatPage'
 import CreatePage from '../CreatePage/CreatePage'
 import StoryPage from '../StoryPage/StoryPage'
+
+import styles from './Main.module.css'
+
 class Main extends Component {
   render() {
     return (
-        <div className="main-panel">
+        <div className= {styles.main}>
         {/* <Navbar /> */}
         <Switch>
           <Route path="/dashboard" component={Dashboard} />

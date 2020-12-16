@@ -1,0 +1,93 @@
+.content{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #eaeaec;
+}
+
+.header{
+    width: 100%;
+    height: 250px;
+    margin-top: 10px;
+    overflow: hidden;
+    border: black;
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+.headerImage{
+    max-width:100%;
+    min-height: 100%;
+}
+
+.headerText{
+    margin: 0px;
+    color: white;
+    font-weight: 900;
+    position: absolute;
+    bottom: 20px;
+    left:40px;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+.mainContainer{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+   align-items: center;
+   overflow-y: scroll;
+   margin-bottom: 20px;
+}
+
+.main{
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+    width: 100%;
+}
+
+.charSelector{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    padding:20px;
+    width: 80%;
+    border-bottom: 1px solid rgb(128, 120, 120);
+}
+
+.popup{
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: rgba(148, 147, 147, 0.602);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popupAnnouncement{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    width: 350px;
+    padding: 20px;
+    text-align: center;
+    font-size: 26px;
+    font-weight: 600;
+    border-radius: 4px;
+    z-index: 999;
+}
+
+.popupButtons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+}
