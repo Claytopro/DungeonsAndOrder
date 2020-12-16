@@ -75,8 +75,8 @@ class Character extends Component {
               <div className= {styles.charSelector}>
               <Toolbar characters = {this.props.characters.allCharacters} handleSelect = {this.selectCharacter} handleEdit = {this.handleEdit} handleDelete = {this.handleDelete}/>
  
-              {(this.state.chars.allCharacters.length >0) &&   
-                <CharacterDisplay key ={this.props.characters.allCharacters[this.state.selectedChar].id} character = {this.props.characters.allCharacters[this.state.selectedChar]}/>
+              {((this.state.chars.allCharacters.length >0) && this.props.characters.allCharacters[this.state.selectedChar] !== undefined) &&   
+                <CharacterDisplay key ={this.state.chars.allCharacters[this.state.selectedChar].id} character = {this.props.characters.allCharacters[this.state.selectedChar]}/>
               }
 
 
