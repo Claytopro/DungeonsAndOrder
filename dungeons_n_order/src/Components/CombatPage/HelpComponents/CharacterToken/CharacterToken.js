@@ -2,8 +2,6 @@ import React, {useState} from 'react';
 import styles from './CharacterToken.module.css'
 import _ from "lodash"
 
-import ActionStub from '../ActionStub/ActionStub'
-
 //icons
 import WreathIcon from '../../../CustomIcons/WreathIcon'
 import ShieldIcon from '../../../CustomIcons/ShieldIcon'
