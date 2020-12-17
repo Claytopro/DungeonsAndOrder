@@ -153,13 +153,14 @@
     text-align: start;
     font-size: 16px;
     font-family: fantasy;
+    border: 1px solid black;
 }
 
 .inputContainer{
     display: flex;
     justify-content: center;
     width: 90%;
-  
+   
     padding:10px
 }
 

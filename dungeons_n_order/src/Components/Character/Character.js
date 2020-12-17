@@ -52,11 +52,11 @@ class Character extends Component {
   }
 
   deleteSelected = () => {
-    console.log(this.state.chars.allCharacters.length);
     if (this.state.chars.allCharacters.length > 0){
       const id = this.props.characters.allCharacters[this.state.selectedChar].id
       //console.log("delete id :" + id);
       this.props.removeCharacter(id)
+      this.setState({selectedChar: 0 })
       this.togglePop(false)
     } 
   }
