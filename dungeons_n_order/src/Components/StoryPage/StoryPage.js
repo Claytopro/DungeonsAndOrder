@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import styles from './StoryPage.module.css'
 import header from './Images/create_header5.png'
 
+import BookIcon from '../CustomIcons/BookIcon'
 
 
 class StoryPage extends Component {
@@ -15,7 +16,7 @@ class StoryPage extends Component {
 
         <div className= {styles.mainContainer}>
             <div className= {styles.main}>
-              Main 
+              <BookIcon style = {{height:"900px",width: "900px",marginTop:"-100px"}}/>
             </div>
         </div>
     </div>
