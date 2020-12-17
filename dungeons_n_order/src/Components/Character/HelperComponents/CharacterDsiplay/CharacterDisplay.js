@@ -69,12 +69,12 @@ function CharacterDisplay(props) {
 
                     <ThemeProvider theme={theme}>
                         <div className = {styles.charInputRow}>
-                            <TextField id="outlined-basic" label="Player Name"  variant="outlined" className = {styles.charTextIn} style = {{margin: "10px"}} defaultValue={attributes[4].value} InputProps={{readOnly: true,}}/>
-                            <TextField id="outlined-basic" label="Class & Level" variant="outlined" className = {styles.charTextIn} style = {{margin: "10px"}} defaultValue={attributes[5].value} InputProps={{readOnly: true,}}/>
+                            <TextField focused ={true} label="Player Name"  variant="outlined" className = {styles.charTextIn} style = {{margin: "10px"}} defaultValue={attributes[4].value} InputProps={{readOnly: true,}}/>
+                            <TextField focused ={true} label="Class & Level" variant="outlined" className = {styles.charTextIn} style = {{margin: "10px"}} defaultValue={attributes[5].value} InputProps={{readOnly: true,}}/>
                         </div>
                         <div className = {styles.charInputRow}> 
-                            <TextField id="outlined-basic" label="Race" variant="outlined" className = {styles.charTextIn} style = {{margin: "10px"}} defaultValue={attributes[6].value} InputProps={{readOnly: true,}}/>
-                            <TextField id="outlined-basic" label="Alignment" variant="outlined" className = {styles.charTextIn} style = {{margin: "10px",color:"black"}} defaultValue={attributes[7].value} InputProps={{readOnly: true,}}/>
+                            <TextField focused ={true} label="Race" variant="outlined" className = {styles.charTextIn} style = {{margin: "10px"}} defaultValue={attributes[6].value} InputProps={{readOnly: true,}}/>
+                            <TextField focused ={true} label="Alignment" variant="outlined" className = {styles.charTextIn} style = {{margin: "10px",color:"black"}} defaultValue={attributes[7].value} InputProps={{readOnly: true,}}/>
                         </div>
                     </ThemeProvider>
                         <div className = {styles.charInputRow}>

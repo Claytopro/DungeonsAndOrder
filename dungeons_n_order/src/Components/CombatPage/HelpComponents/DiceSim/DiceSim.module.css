@@ -1,0 +1,25 @@
+.diceSim{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.diceRow{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.roll{
+    font-size: 24px;
+    font-weight: bold;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 15px;
+    width: 30px;
+    border: 1px solid black;
+    border-radius: 4px;
+    text-align: center;
+}

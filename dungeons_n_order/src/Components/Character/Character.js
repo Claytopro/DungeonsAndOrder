@@ -52,11 +52,11 @@ class Character extends Component {
   }
 
   deleteSelected = () => {
-    console.log(this.state.chars.allCharacters.length);
     if (this.state.chars.allCharacters.length > 0){
       const id = this.props.characters.allCharacters[this.state.selectedChar].id
       //console.log("delete id :" + id);
       this.props.removeCharacter(id)
+      this.setState({selectedChar: 0 })
       this.togglePop(false)
     } 
   }
@@ -75,8 +75,8 @@ class Character extends Component {
               <div className= {styles.charSelector}>
               <Toolbar characters = {this.props.characters.allCharacters} handleSelect = {this.selectCharacter} handleEdit = {this.handleEdit} handleDelete = {this.handleDelete}/>
  
-              {(this.state.chars.allCharacters.length >0) &&   
-                <CharacterDisplay key ={this.props.characters.allCharacters[this.state.selectedChar].id} character = {this.props.characters.allCharacters[this.state.selectedChar]}/>
+              {((this.state.chars.allCharacters.length >0) && this.props.characters.allCharacters[this.state.selectedChar] !== undefined) &&   
+                <CharacterDisplay key ={this.state.chars.allCharacters[this.state.selectedChar].id} character = {this.props.characters.allCharacters[this.state.selectedChar]}/>
               }
 
 
