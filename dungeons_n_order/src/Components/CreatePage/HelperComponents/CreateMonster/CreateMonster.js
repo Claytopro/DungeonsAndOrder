@@ -147,7 +147,7 @@ function CreateMonster(props) {
             
             <div className = {styles.mobCreatRow}>
                 <div className = {styles.charAbility}>
-                        <div className = {styles.abilityHeader}>Dexterity</div>
+                        <div className = {styles.abilityHeader}>Strength</div>
                         <div className = {styles.ability}>
                             <WreathIcon style = {{fontSize:"130px"}} className={styles.wreathPos} />
                             <input type = "text" placeholder = "10" className={styles.abilityInput} onChange = {e => updateAbilityScore("strength",e.target.value)}/>
@@ -155,7 +155,7 @@ function CreateMonster(props) {
                         </div>
                 </div>
                 <div className = {styles.charAbility}>
-                        <div className = {styles.abilityHeader}>Strength</div>
+                        <div className = {styles.abilityHeader}>Dexterity</div>
                         <div className = {styles.ability}>
                             <WreathIcon style = {{fontSize:"130px"}} className={styles.wreathPos} />
                             <input type = "text" placeholder = "10" className={styles.abilityInput} onChange = {e => updateAbilityScore("dexterity",e.target.value)}/>

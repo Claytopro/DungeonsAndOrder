@@ -188,7 +188,7 @@ function CreateCharacter(props) {
 
                         <FormControlLabel
                         control={<Checkbox style = {{color:"black"}} />}
-                        label="Aleight of Hand"
+                        label="Sleight of Hand"
                         labelPlacement="end"
                         onChange = {() => updateSkills("sleight of hand")}
                         /> 
