@@ -25,7 +25,7 @@ function CreateItem(props) {
 
 
     const saveItem = () => {
-        const toAdd = _.deepClone(item)
+        const toAdd = _.cloneDeep(item)
         dispatch(addItem(toAdd))
         togExpand(0)
         togglePop(true)
